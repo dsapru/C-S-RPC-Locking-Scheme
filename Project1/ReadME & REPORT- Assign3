@@ -1,0 +1,60 @@
+NAMES And IDs:
+
+1. Ravi Chandra Kumar Venkatesh (1001581994)
+2. Dipit Sapru ()
+
+
+
+Assignment-3 (Remote procedure call (RPC) based communication):
+===============================================================
+
+1. ServerClass.java
+2. ClientClass.java
+3. RemoteProcedureCalculatePi.java
+4. RemoteProcedureForAdd.java
+5. RemoteProcedureForMatrixMultiply.java
+6. RemoteProcedureForSortArray.java
+
+there are totally 6 java files. 5 on server side and 1 on client side.
+
+Instructions to run:
+====================
+
+	1. extract all these 6 java files to a single folder.
+	2. then, compile them using the cmd: javac *.java
+	3. then, first start the server using the command:
+
+			java ServerClass  
+
+	4. then, start as amny clientts as required using the cmd:
+
+			java ClientClass
+
+More details on calling Remote Procedures from client to server:
+================================================================
+
+Once the server starts it can accept connections from Client over port 5000. (you DO NOT have to specify the port - its taken care)
+Server creates one thread for each client. Hence, it is multithreaded.
+And when a client starts, it establishes a connection with the server, and provides options to user to select the procedure to call as shown below:
+
+Which procedure do you want to call? Enter a number from (1-4):
+1. calculate_pi()
+2.  add(i, j)
+3. sort(arrayA)
+4. matrix_multiply(matrixA, matrixB, matrixC)
+
+choose one of the options and follow the instructions on the console. 
+for example, if you choose 3, then you will be prompted to : Enter number of elements to be inserted in the Array - if I entered "5", then based on that 
+Enter 5 elements into the array. - you will then need to enter 5 numbers to insert into the array.
+
+once that is done, the clientStub will create the message and send it to server over the socket.
+Server will receive the message and identify the procedure called hand it over to the corresponding serverStub. The server stub unpacks the message and calls the local funtion to sort the array. Once the function finishes sorting the array, it will send the output to the client.
+
+This whole thing is Synchronous, so the client will wait until it receives the result of the procedure call from server.
+
+Once, the result is returned to client the client prints the result on its console.
+
+
+
+
+
